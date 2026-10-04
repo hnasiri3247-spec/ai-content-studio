@@ -3,11 +3,11 @@ name: Android Build APK
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # این خط اجازه می‌دهد دستی هم دکمه ساخت را بزنید
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # گیت‌هاب از یک سیستم اوبونتو قدرتمند استفاده می‌کند
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -19,8 +19,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 8.7
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
