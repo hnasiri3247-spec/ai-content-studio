@@ -1,9 +1,16 @@
 pluginManagement {
-    repositories { google(); mavenCentral(); gradlePluginPortal() }
+    repositories {
+        maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories { google(); mavenCentral() }
+    repositories {
+        maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
+        mavenCentral()
+    }
 }
 rootProject.name = "AIContentStudio"
 include(":app")
