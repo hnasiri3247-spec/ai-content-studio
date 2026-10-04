@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    namespace = "com.aicontentstudio"
+    compileSdk = 34
+
     defaultConfig {
         applicationId = "com.aicontentstudio"
         minSdk = 21
@@ -11,18 +14,28 @@ android {
         versionCode = 2
         versionName = "1.1"
     }
-    signingConfigs {
-        create("debug") {
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-            storeFile = file("debug.keystore")
-            storePassword = "android"
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
-    buildTypes {
-        debug {
-            signingConfig = signingConfigs.getByName("debug")
-        }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
